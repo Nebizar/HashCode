@@ -1,6 +1,7 @@
 from math import fabs
 import sys
 import michal
+import fileinput
 
 class Taxi:
     c =0 #x
@@ -37,13 +38,20 @@ def write_answer(array, filename):
 
 def main():
     taxis = []
+    input = fileinput.input("a_example.in")
+    tablica = input[0].split(" ")
+    tablica = tablica[0:-1]
+    #print(tablica)
     orderManager = michal.OrderManager()
     orderManager.loadFromFile("a_example.in")
-    orderManager.printInfo()
-    for i in range (michal.taxicount):
+    #orderManager.printInfo()
+    for i in range (tablica[2]):
         taxi = Taxi()
         taxis.append(taxi)
 
     #do_stuff
 
     write_answer(taxis, "output.txt")
+
+if __name__ == '__main__':
+    main()

@@ -1,5 +1,6 @@
 from math import fabs
 import sys
+from michal import OrderManager
 
 class Taxi:
     c =0
@@ -29,5 +30,12 @@ class Taxi:
         self.rides.append(self.chosen)
         del orderM.orders[self.pos]
 
+def main():
+    orderManager = OrderManager()
+    orderManager.loadFromFile("a_example.in")
+    orderManager.printInfo()
+
+if __name__ == '__main__':
+    main()
 
 
