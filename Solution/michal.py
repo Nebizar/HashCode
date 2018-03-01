@@ -6,12 +6,14 @@ class Order:
     B=[]
     start = 0
     end = 0
+
     def __init__(self, inId, inA, inB, inStart, inEnd):
         self.A = inA
         self.B = inB
         self.start = inStart
         self.end = inEnd
         self.id = inId
+
     def printInfo(self):
         print(self.id, self.A, self.B, self.start, self.end)
 
@@ -34,11 +36,17 @@ class OrderManager:
                 order = Order(i-1, [int(Ax), int(Ay)], [int(Bx), int(By)], int(start), int(end))
                 self.orders.append( order )
             i += 1
+
     def printInfo(self):
         print("Nagłówek: ", self.firstInfoRow)
         for order in self.orders:
             order.printInfo()
 
+"""orderManager = OrderManager()
+orderManager.loadFromFile("a_example.in")
+orderManager.printInfo()
+
+"""
 orderManager = OrderManager()
 orderManager.loadFromFile("a_example.in")
 orderManager.printInfo()

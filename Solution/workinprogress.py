@@ -30,7 +30,7 @@ class Taxi:
         del orderM.orders[self.pos]
 
 
-def output(array, filename):
+def write_answer(array, filename):
     with open(filename) as file:
         for taxi in array:
             file.write(len(taxi.rides) + ' ' + ' '.join(taxi.rides))
@@ -40,6 +40,10 @@ def main():
     orderManager = michal.OrderManager()
     orderManager.loadFromFile("a_example.in")
     orderManager.printInfo()
+    for i in range (michal.taxicount):
+        taxi = Taxi()
+        taxis.append(taxi)
 
+    #do_stuff
 
-
+    write_answer(taxis, "output.txt")
