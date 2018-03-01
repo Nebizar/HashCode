@@ -1,5 +1,4 @@
 import fileinput
-import copy
 
 class Order:
     id = 0
@@ -21,17 +20,22 @@ class Order:
 
 class OrderManager:
     orders = []
-
+    firstInfoRow = []
     def loadFromFile(self, path):
         input = fileinput.input(path)
         i=0
         for line in input:
-            Ax,Ay,Bx,By,start,end=line.split(" ")
-            order = Order(i, [Ax, Ay], [Bx, By], start, end)
-            self.orders.append( order )
+            if i==0:
+                self.firstInfoRow = line.split(" ")
+                self.firstInfoRow = self.firstInfoRow[0:-1]
+            else:
+                Ax,Ay,Bx,By,start,end=line.split(" ")
+                order = Order(i, [Ax, Ay], [Bx, By], start, end)
+                self.orders.append( order )
             i += 1
 
     def printInfo(self):
+        print(self.firstInfoRow)
         for order in self.orders:
             print(order.printInfo())
 
@@ -40,3 +44,6 @@ orderManager.loadFromFile("a_example.in")
 orderManager.printInfo()
 
 """
+orderManager = OrderManager()
+orderManager.loadFromFile("a_example.in")
+orderManager.printInfo()
