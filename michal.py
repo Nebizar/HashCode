@@ -5,14 +5,14 @@ class Order:
     id = 0
     A=[]
     B=[]
-    start = []
-    end = []
+    start = 0
+    end = 0
     def __init__(self, inId, inA, inB, inStart, inEnd):
-        A = copy.deepcopy(inA)
-        B = copy.deepcopy(inB)
-        start = copy.deepcopy(inStart)
-        end = copy.deepcopy(inEnd)
-        id = copy.deepcopy(inId)
+        self.A = inA
+        self.B = inB
+        self.start = inStart
+        self.end = inEnd
+        self.id = inId
     def printInfo(self):
         print(self.id, self.A, self.B, self.start, self.end)
 
@@ -24,8 +24,8 @@ class OrderManager:
         i=0
         for line in input:
             Ax,Ay,Bx,By,start,end=line.split(" ")
-            tempObject = Order(i,[Ax, Ay], [Bx, By], start, end)
-            self.orders.append( tempObject )
+            order = Order(i, [Ax, Ay], [Bx, By], start, end)
+            self.orders.append( order )
             i += 1
     def printInfo(self):
         for order in self.orders:
