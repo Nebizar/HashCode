@@ -18,6 +18,7 @@ class Order:
 
 class OrderManager:
     orders = []
+    premia = 0
     firstInfoRow = []
     def loadFromFile(self, path):
         input = fileinput.input(path)
@@ -25,16 +26,18 @@ class OrderManager:
         for line in input:
             if i==0:
                 self.firstInfoRow = line.split(" ")
-                self.firstInfoRow = self.firstInfoRow[0:-1]
+                self.firstInfoRow[-1] = self.firstInfoRow[-1][0:-1]
+                for a in range( len(self.firstInfoRow) ):
+                    self.firstInfoRow[a] = int(self.firstInfoRow[a])
             else:
                 Ax,Ay,Bx,By,start,end=line.split(" ")
-                order = Order(i, [Ax, Ay], [Bx, By], start, end)
+                order = Order(i-1, [int(Ax), int(Ay)], [int(Bx), int(By)], int(start), int(end))
                 self.orders.append( order )
             i += 1
     def printInfo(self):
-        print(self.firstInfoRow)
+        print("Nagłówek: ", self.firstInfoRow)
         for order in self.orders:
-            print(order.printInfo())
+            order.printInfo()
 
 orderManager = OrderManager()
 orderManager.loadFromFile("a_example.in")
